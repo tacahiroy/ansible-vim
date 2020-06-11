@@ -1,0 +1,44 @@
+---
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "vars/{{ ansible_os_family }}.yml"
+
+- name: Install dependencies
+  package:
+    name: "{{ vim_dependent_packages }}"
+    state: present
+
+- name: Clone the repo - vim/vim
+  git:
+    repo: https://github.com/vim/vim.git
+    version: master
+    dest: "{{ ansible_env.HOME }}/dev/vim"
+  become_user: "{{ ansible_user_id }}"
+
+- name: Compile Vim
+  command: |
+    ./configure --enable-fail-if-missing \
+    --includedir=/usr/include \
+    --enable-python3interp=yes \
+    --enable-rubyinterp=no \
+    --enable-luainterp=yes \
+    --enable-multibyte \
+    --enable-gui=no \
+    --enable-terminal \
+    --disable-netbeans \
+    --disable-farsi \
+    --disable-arabic \
+    --disable-rightleft \
+    --with-python3-config-dir=/usr/lib/python{{ vim_python_version }}/config-{{ vim_python_version }}m-x86_64-linux-gnu \
+    --with-python3-command=python{{ vim_python_version }} \
+    --with-features=huge \
+    make && make
+  args:
+    chdir: "{{ ansible_env.HOME }}/dev/vim"
+  become_user: root
+
+- name: Install
+  command: make install
+  args:
+    chdir: "{{ ansible_env.HOME }}/dev/vim"
+  become_user: root

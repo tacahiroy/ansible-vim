@@ -1,0 +1,6 @@
+---
+vim_dependent_packages:
+  - lua-devel
+  - ncurses-devel
+  - python36
+  - python36-devel

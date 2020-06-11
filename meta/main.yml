@@ -1,0 +1,16 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Takahiro Yoshihara
+  description: Compiles and installs Vim
+  company:
+  license: Proprietary
+  min_ansible_version: 2.4
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags:
+    - vim
+    - editor

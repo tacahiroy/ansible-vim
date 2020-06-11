@@ -1,0 +1,4 @@
+---
+vim_dependent_packages:
+vim_if_python_enabled: yes
+vim_python_version: 3.6
