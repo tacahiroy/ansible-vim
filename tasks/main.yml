@@ -13,7 +13,6 @@
     repo: https://github.com/vim/vim.git
     version: master
     dest: "{{ ansible_env.HOME }}/dev/vim"
-  become_user: "{{ ansible_user_id }}"
 
 - name: Compile Vim
   command: |
@@ -41,4 +40,5 @@
   command: make install
   args:
     chdir: "{{ ansible_env.HOME }}/dev/vim"
+  become: yes
   become_user: root
