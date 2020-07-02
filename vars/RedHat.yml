@@ -1,6 +1,9 @@
 ---
+vim_python_version: 3.6
 vim_dependent_packages:
   - lua-devel
   - ncurses-devel
   - python36
   - python36-devel
+
+vim_include_dir: /usr/include

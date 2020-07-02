@@ -19,7 +19,7 @@
 - name: Compile Vim
   command: |
     ./configure --enable-fail-if-missing \
-    --includedir=/usr/include \
+    --includedir=/usr/include/lua5.3 \
     --enable-python3interp=yes \
     --enable-rubyinterp=no \
     --enable-luainterp=yes \
