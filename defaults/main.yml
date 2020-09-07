@@ -1,4 +1,6 @@
 ---
 vim_dependent_packages:
 vim_if_python_enabled: yes
-vim_python_version: 3.6
+vim_python_version: 3.8
+vim_python_config_dir: /usr/lib/python{{ vim_python_version }}/config-{{ vim_python_version }}-x86_64-linux-gnu
+vim_repo_path: "{{ ansible_env.HOME }}/vim"

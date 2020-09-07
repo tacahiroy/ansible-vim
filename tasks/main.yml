@@ -14,7 +14,7 @@
   git:
     repo: https://github.com/vim/vim.git
     version: master
-    dest: "{{ ansible_env.HOME }}/dev/vim"
+    dest: "{{ vim_repo_path }}"
 
 - name: Compile Vim
   command: |
@@ -30,17 +30,17 @@
     --disable-farsi \
     --disable-arabic \
     --disable-rightleft \
-    --with-python3-config-dir=/usr/lib/python{{ vim_python_version }}/config-{{ vim_python_version }}m-x86_64-linux-gnu \
+    --with-python3-config-dir={{ vim_python_config_dir }} \
     --with-python3-command=python{{ vim_python_version }} \
     --with-features=huge \
     make && make
   args:
-    chdir: "{{ ansible_env.HOME }}/dev/vim"
+    chdir: "{{ vim_repo_path }}"
   become_user: root
 
 - name: Install
   command: make install
   args:
-    chdir: "{{ ansible_env.HOME }}/dev/vim"
+    chdir: "{{ vim_repo_path }}"
   become: yes
   become_user: root

@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
   connection: local
+  vars:
+    vim_repo_path: "{{ ansible_env.HOME }}/dev/src/github.com/vim/vim"
+    vim_python_version: 3.8
   roles:
     - ansible-vim
